@@ -1,0 +1,12 @@
+<!--pages/randomcode/randomcode.wxml-->
+<view class='father'>
+  <form bindsubmit='formSubmit'>
+    <button bindtap='reset'>
+      <image id='image' src='https://www.hilzh.xyz/Coursetable/randomcode.png'></image>
+    </button>
+    <input id='input' name='randomcode' focus='true' placeholder='请输入图中验证码'></input>
+    <navigator url='/pages/waiting/waiting'>
+      <button form-type='submit'>确定</button>
+    </navigator>
+  </form>
+</view>

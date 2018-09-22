@@ -1,0 +1,12 @@
+/* pages/randomcode/randomcode.wxss */
+.father {
+  margin-top: 200px;
+  text-align: center;
+}
+#image {
+  width: 100px;
+  height: 50px;
+}
+#input {
+  margin: 50px;
+}

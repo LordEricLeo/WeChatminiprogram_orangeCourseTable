@@ -1,0 +1,20 @@
+<!--pages/main/main.wxml-->
+<view class='father'>
+  <view class='head'>
+    <text>{{tip}}</text>
+    <view class='time'>
+      <text>{{time}}</text>
+    </view>
+    <view class='name'>
+      <text>{{name}}</text>
+    </view>
+    <view class='place'>
+      <text>{{place}}</text>
+    </view>
+  </view>
+  <view class='body'>
+    <navigator url='/pages/coursetable/coursetable'>
+      <button type='primary'>查看一周课表</button>
+    </navigator>
+  </view>
+</view>

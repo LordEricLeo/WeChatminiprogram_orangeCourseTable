@@ -1,0 +1,15 @@
+{
+  "pages": [
+    "pages/main/main",
+    "pages/login/login",
+    "pages/randomcode/randomcode",
+    "pages/waiting/waiting",
+    "pages/coursetable/coursetable"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#66ccff",
+    "navigationBarTitleText": "课橙表",
+    "navigationBarTextStyle": "white"
+  }
+}

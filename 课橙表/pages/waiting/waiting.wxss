@@ -1,0 +1,9 @@
+/* pages/waiting/waiting.wxss */
+.father {
+  margin-top: 200px;
+  text-align: center;
+}
+#image {
+  width: 70px;
+  height: 70px;
+}

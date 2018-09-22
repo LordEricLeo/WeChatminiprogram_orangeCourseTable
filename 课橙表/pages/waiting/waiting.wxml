@@ -1,0 +1,5 @@
+<!--pages/waiting/waiting.wxml-->
+<view class='father'>
+  <image id='image' src='../../images/waitting.png'></image>
+  <view><text>请稍后,第一次可能需要些时间...</text></view>
+</view>

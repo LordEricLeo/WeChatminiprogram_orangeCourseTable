@@ -1,0 +1,27 @@
+<!--pages/login/login.wxml-->
+<view class='background'>
+  <view class='head'>
+    <image class='head-image' src='../../images/upc_logo.png'></image>
+  </view>
+  <view class='body'>
+    <form bindsubmit='formSubmit'>
+      <view class='body-form'>
+        <view class='input-parent'>
+          <input name='username' class='input-child' focus='true' type='number' value='' placeholder='请输入学号...' placeholder-style='font-size:20px;'></input>
+        </view>
+        <view class='input-parent'>
+          <input name='password' class='input-child' password='true' value='' placeholder='请输入密码...' placeholder-style='font-size:20px;'></input>
+        </view>
+        <checkbox id='autosearch' value='' checked='true'>下次自动查询课表</checkbox>
+      </view>
+      <navigator url='/pages/randomcode/randomcode'><button form-type='submit' type='primary'>登录</button></navigator>
+    </form>
+    <view id='copyright'>
+      <image id='logo' src='../../images/orange_logo.png'></image>
+      <text> © LZH. All Rights Reserved.</text>
+    </view>
+  </view>
+  <view class='foot'>
+    ad
+  </view>
+</view>

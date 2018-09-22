@@ -1,0 +1,115 @@
+/* pages/coursetable/coursetable.wxss */
+
+.topnav {
+  display: flex;
+  flex-direction: row;
+  background-color: rgb(246, 248, 249);
+}
+
+.topnav-item {
+  width: 13%;
+}
+
+.scroll {
+  height: 550px;
+}
+
+.maincontainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.sidenav {
+  width: 9%;
+  background-color: rgb(246, 248, 249);
+}
+
+.sidenav-item {
+  height: 100px;
+  padding-top: 1px;
+}
+
+.sidenav-viewstyle {
+  height: 99px;
+  font-size: 15px;
+}
+
+.course {
+  width: 91%;
+}
+
+.course-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.course-col {
+  width: 14.2857%;
+  height: 100px;
+  padding-top: 1px;
+  padding-left: 1%;
+}
+
+.course-viewstyle {
+  height: 99px;
+  font-size: 15px;
+  color: white;
+  border-radius: 7%;
+}
+
+.course-viewstyle-gray {
+  height: 99px;
+  font-size: 15px;
+  color: white;
+  border-radius: 7%;
+  background-color: gray;
+  opacity: 0.2;
+}
+
+.course-viewstyle-red {
+  height: 99px;
+  font-size: 15px;
+  color: white;
+  border-radius: 7%;
+  background-color: red;
+}
+
+.course-viewstyle-orange {
+  height: 99px;
+  font-size: 15px;
+  color: white;
+  border-radius: 7%;
+  background-color: orange;
+}
+
+.course-viewstyle-yellow {
+  height: 99px;
+  font-size: 15px;
+  color: white;
+  border-radius: 7%;
+  background-color: yellow;
+}
+
+.course-viewstyle-green {
+  height: 99px;
+  font-size: 15px;
+  color: white;
+  border-radius: 7%;
+  background-color: lime;
+}
+
+.course-viewstyle-blue {
+  height: 99px;
+  font-size: 15px;
+  color: white;
+  border-radius: 7%;
+  background-color: deepskyblue;
+}
+
+.course-viewstyle-purple {
+  height: 99px;
+  font-size: 15px;
+  color: white;
+  border-radius: 7%;
+  background-color: darkviolet;
+}

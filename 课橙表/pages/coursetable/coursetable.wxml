@@ -1,0 +1,331 @@
+<!--pages/coursetable/coursetable.wxml-->
+<!--星期view-->
+<view class='topnav'>
+  <view style='width: 9%'>
+    <text>{{month}}</text>
+  </view>
+  <view class='topnav-item'>
+    <text>周日</text>
+  </view>
+  <view class='topnav-item'>
+    <text>周一</text>
+  </view>
+  <view class='topnav-item'>
+    <text>周二</text>
+  </view>
+  <view class='topnav-item'>
+    <text>周三</text>
+  </view>
+  <view class='topnav-item'>
+    <text>周四</text>
+  </view>
+  <view class='topnav-item'>
+    <text>周五</text>
+  </view>
+  <view class='topnav-item'>
+    <text>周六</text>
+  </view>
+</view>
+<!--日期view-->
+<view class='topnav'>
+  <view style='width: 9%'>
+    <text>月</text>
+  </view>
+  <view class='topnav-item'>
+    <text>{{sundaydate}}日</text>
+  </view>
+  <view class='topnav-item'>
+    <text>{{sundaydate+1}}日</text>
+  </view>
+  <view class='topnav-item'>
+    <text>{{sundaydate+2}}日</text>
+  </view>
+  <view class='topnav-item'>
+    <text>{{sundaydate+3}}日</text>
+  </view>
+  <view class='topnav-item'>
+    <text>{{sundaydate+4}}日</text>
+  </view>
+  <view class='topnav-item'>
+    <text>{{sundaydate+5}}日</text>
+  </view>
+  <view class='topnav-item'>
+    <text>{{sundaydate+6}}日</text>
+  </view>
+</view>
+<scroll-view class='scroll' scroll-y scroll-top="{{scrollTop}}">
+  <view class='maincontainer'>
+    <view class='sidenav'>
+      <!--第一大节课的时间导航栏-->
+      <view class='sidenav-item'>
+        <view class='sidenav-viewstyle'>
+          <text>8:00</text>
+        </view>
+      </view>
+      <!--第二大节课的时间导航栏-->
+      <view class='sidenav-item'>
+        <view class='sidenav-viewstyle'>
+          <text>10:10</text>
+        </view>
+      </view>
+      <!--午休间隔-->
+      <!--第三大节课的时间导航栏-->
+      <view style='height:10px;'></view>
+      <view class='sidenav-item'>
+        <view class='sidenav-viewstyle'>
+          <text>14:00</text>
+        </view>
+      </view>
+      <!--第四大节课的时间导航栏-->
+      <view class='sidenav-item'>
+        <view class='sidenav-viewstyle'>
+          <text>16:10</text>
+        </view>
+      </view>
+      <!--第五大节课的时间导航栏-->
+      <view class='sidenav-item'>
+        <view class='sidenav-viewstyle'>
+          <text>19:00</text>
+        </view>
+      </view>
+      <!--第六大节课的时间导航栏-->
+      <view class='sidenav-item'>
+        <view class='sidenav-viewstyle'>
+          <text>21:00</text>
+        </view>
+      </view>
+    </view>
+    <view class='course'>
+      <!--第一大节课的课表-->
+      <view class='course-row'>
+        <view class='course-col'>
+          <view class='{{courseviewstyle[0][0]}}'>
+            <text>{{coursetable[0][0]['课程名称']}}{{atsymbol[0][0]}}{{coursetable[0][0]['上课地点']}}</text>
+          </view>
+        </view>
+        <view class='course-col'>
+          <view class='{{courseviewstyle[0][1]}}'>
+            <text>{{coursetable[0][1]['课程名称']}}{{atsymbol[0][1]}}{{coursetable[0][1]['上课地点']}}</text>
+          </view>
+        </view>
+        <view class='course-col'>
+          <view class='{{courseviewstyle[0][2]}}'>
+            <text>{{coursetable[0][2]['课程名称']}}{{atsymbol[0][2]}}{{coursetable[0][2]['上课地点']}}</text>
+          </view>
+        </view>
+        <view class='course-col'>
+          <view class='{{courseviewstyle[0][3]}}'>
+            <text>{{coursetable[0][3]['课程名称']}}{{atsymbol[0][3]}}{{coursetable[0][3]['上课地点']}}</text>
+          </view>
+        </view>
+        <view class='course-col'>
+          <view class='{{courseviewstyle[0][4]}}'>
+            <text>{{coursetable[0][4]['课程名称']}}{{atsymbol[0][4]}}{{coursetable[0][4]['上课地点']}}</text>
+          </view>
+        </view>
+        <view class='course-col'>
+          <view class='{{courseviewstyle[0][5]}}'>
+            <text>{{coursetable[0][5]['课程名称']}}{{atsymbol[0][5]}}{{coursetable[0][5]['上课地点']}}</text>
+          </view>
+        </view>
+        <view class='course-col'>
+          <view class='{{courseviewstyle[0][6]}}'>
+            <text>{{coursetable[0][6]['课程名称']}}{{atsymbol[0][6]}}{{coursetable[0][6]['上课地点']}}</text>
+          </view>
+        </view>
+      </view>
+      <!--第二大节课的课表-->
+      <view class='course-row'>
+        <view class='course-col'>
+          <view class='{{courseviewstyle[1][0]}}'>
+            <text>{{coursetable[1][0]['课程名称']}}{{atsymbol[1][0]}}{{coursetable[1][0]['上课地点']}}</text>
+          </view>
+        </view>
+        <view class='course-col'>
+          <view class='{{courseviewstyle[1][1]}}'>
+            <text><text>{{coursetable[1][1]['课程名称']}}{{atsymbol[1][1]}}{{coursetable[1][1]['上课地点']}}</text></text>
+          </view>
+        </view>
+        <view class='course-col'>
+          <view class='{{courseviewstyle[1][2]}}'>
+            <text><text>{{coursetable[1][2]['课程名称']}}{{atsymbol[1][2]}}{{coursetable[1][2]['上课地点']}}</text></text>
+          </view>
+        </view>
+        <view class='course-col'>
+          <view class='{{courseviewstyle[1][3]}}'>
+            <text><text>{{coursetable[1][3]['课程名称']}}{{atsymbol[1][3]}}{{coursetable[1][3]['上课地点']}}</text></text>
+          </view>
+        </view>
+        <view class='course-col'>
+          <view class='{{courseviewstyle[1][4]}}'>
+            <text>{{coursetable[1][4]['课程名称']}}{{atsymbol[1][4]}}{{coursetable[1][4]['上课地点']}}</text>
+          </view>
+        </view>
+        <view class='course-col'>
+          <view class='{{courseviewstyle[1][5]}}'>
+            <text>{{coursetable[1][5]['课程名称']}}{{atsymbol[1][5]}}{{coursetable[1][5]['上课地点']}}</text>
+          </view>
+        </view>
+        <view class='course-col'>
+          <view class='{{courseviewstyle[1][6]}}'>
+            <text>{{coursetable[1][6]['课程名称']}}{{atsymbol[1][6]}}{{coursetable[1][6]['上课地点']}}</text>
+          </view>
+        </view>
+      </view>
+      <!--午休间隔-->
+      <view style='height:10px;'></view>
+      <!--第三大节课的课表-->
+      <view class='course-row'>
+        <view class='course-col'>
+          <view class='{{courseviewstyle[2][0]}}'>
+            <text>{{coursetable[2][0]['课程名称']}}{{atsymbol[2][0]}}{{coursetable[2][0]['上课地点']}}</text>
+          </view>
+        </view>
+        <view class='course-col'>
+          <view class='{{courseviewstyle[2][1]}}'>
+            <text>{{coursetable[2][1]['课程名称']}}{{atsymbol[2][1]}}{{coursetable[2][1]['上课地点']}}</text>
+          </view>
+        </view>
+        <view class='course-col'>
+          <view class='{{courseviewstyle[2][2]}}'>
+            <text>{{coursetable[2][2]['课程名称']}}{{atsymbol[2][2]}}{{coursetable[2][2]['上课地点']}}</text>
+          </view>
+        </view>
+        <view class='course-col'>
+          <view class='{{courseviewstyle[2][3]}}'>
+            <text>{{coursetable[2][3]['课程名称']}}{{atsymbol[2][3]}}{{coursetable[2][3]['上课地点']}}</text>
+          </view>
+        </view>
+        <view class='course-col'>
+          <view class='{{courseviewstyle[2][4]}}'>
+            <text>{{coursetable[2][4]['课程名称']}}{{atsymbol[2][4]}}{{coursetable[2][4]['上课地点']}}</text>
+          </view>
+        </view>
+        <view class='course-col'>
+          <view class='{{courseviewstyle[2][5]}}'>
+            <text>{{coursetable[2][5]['课程名称']}}{{atsymbol[2][5]}}{{coursetable[2][5]['上课地点']}}</text>
+          </view>
+        </view>
+        <view class='course-col'>
+          <view class='{{courseviewstyle[2][6]}}'>
+            <text>{{coursetable[2][6]['课程名称']}}{{atsymbol[2][6]}}{{coursetable[2][6]['上课地点']}}</text>
+          </view>
+        </view>
+      </view>
+      <!--第四大节课的课表-->
+      <view class='course-row'>
+        <view class='course-col'>
+          <view class='{{courseviewstyle[3][0]}}'>
+            <text>{{coursetable[3][0]['课程名称']}}{{atsymbol[3][0]}}{{coursetable[3][0]['上课地点']}}</text>
+          </view>
+        </view>
+        <view class='course-col'>
+          <view class='{{courseviewstyle[3][1]}}'>
+            <text>{{coursetable[3][1]['课程名称']}}{{atsymbol[3][1]}}{{coursetable[3][1]['上课地点']}}</text>
+          </view>
+        </view>
+        <view class='course-col'>
+          <view class='{{courseviewstyle[3][2]}}'>
+            <text>{{coursetable[3][2]['课程名称']}}{{atsymbol[3][2]}}{{coursetable[3][2]['上课地点']}}</text>
+          </view>
+        </view>
+        <view class='course-col'>
+          <view class='{{courseviewstyle[3][3]}}'>
+            <text>{{coursetable[3][3]['课程名称']}}{{atsymbol[3][3]}}{{coursetable[3][3]['上课地点']}}</text>
+          </view>
+        </view>
+        <view class='course-col'>
+          <view class='{{courseviewstyle[3][4]}}'>
+            <text>{{coursetable[3][4]['课程名称']}}{{atsymbol[3][4]}}{{coursetable[3][4]['上课地点']}}</text>
+          </view>
+        </view>
+        <view class='course-col'>
+          <view class='{{courseviewstyle[3][5]}}'>
+            <text>{{coursetable[3][5]['课程名称']}}{{atsymbol[3][5]}}{{coursetable[3][5]['上课地点']}}</text>
+          </view>
+        </view>
+        <view class='course-col'>
+          <view class='{{courseviewstyle[3][6]}}'>
+            <text>{{coursetable[3][6]['课程名称']}}{{atsymbol[3][6]}}{{coursetable[3][6]['上课地点']}}</text>
+          </view>
+        </view>
+      </view>
+      <!--第五大节课的课表-->
+      <view class='course-row'>
+        <view class='course-col'>
+          <view class='{{courseviewstyle[4][0]}}'>
+            <text>{{coursetable[4][0]['课程名称']}}{{atsymbol[4][0]}}{{coursetable[4][0]['上课地点']}}</text>
+          </view>
+        </view>
+        <view class='course-col'>
+          <view class='{{courseviewstyle[4][1]}}'>
+            <text>{{coursetable[4][1]['课程名称']}}{{atsymbol[4][1]}}{{coursetable[4][1]['上课地点']}}</text>
+          </view>
+        </view>
+        <view class='course-col'>
+          <view class='{{courseviewstyle[4][2]}}'>
+            <text>{{coursetable[4][2]['课程名称']}}{{atsymbol[4][2]}}{{coursetable[4][2]['上课地点']}}</text>
+          </view>
+        </view>
+        <view class='course-col'>
+          <view class='{{courseviewstyle[4][3]}}'>
+            <text>{{coursetable[4][3]['课程名称']}}{{atsymbol[4][3]}}{{coursetable[4][3]['上课地点']}}</text>
+          </view>
+        </view>
+        <view class='course-col'>
+          <view class='{{courseviewstyle[4][4]}}'>
+            <text>{{coursetable[4][4]['课程名称']}}{{atsymbol[4][4]}}{{coursetable[4][4]['上课地点']}}</text>
+          </view>
+        </view>
+        <view class='course-col'>
+          <view class='{{courseviewstyle[4][5]}}'>
+            <text>{{coursetable[4][5]['课程名称']}}{{atsymbol[4][5]}}{{coursetable[4][5]['上课地点']}}</text>
+          </view>
+        </view>
+        <view class='course-col'>
+          <view class='{{courseviewstyle[4][6]}}'>
+            <text>{{coursetable[4][6]['课程名称']}}{{atsymbol[4][6]}}{{coursetable[4][6]['上课地点']}}</text>
+          </view>
+        </view>
+      </view>
+      <!--第六大节课的课表-->
+      <view class='course-row'>
+        <view class='course-col'>
+          <view class='{{courseviewstyle[5][0]}}'>
+            <text>{{coursetable[5][0]['课程名称']}}{{atsymbol[5][0]}}{{coursetable[5][0]['上课地点']}}</text>
+          </view>
+        </view>
+        <view class='course-col'>
+          <view class='{{courseviewstyle[5][1]}}'>
+            <text>{{coursetable[5][1]['课程名称']}}{{atsymbol[5][1]}}{{coursetable[5][1]['上课地点']}}</text>
+          </view>
+        </view>
+        <view class='course-col'>
+          <view class='{{courseviewstyle[5][2]}}'>
+            <text>{{coursetable[5][2]['课程名称']}}{{atsymbol[5][2]}}{{coursetable[5][2]['上课地点']}}</text>
+          </view>
+        </view>
+        <view class='course-col'>
+          <view class='{{courseviewstyle[5][3]}}'>
+            <text>{{coursetable[5][3]['课程名称']}}{{atsymbol[5][3]}}{{coursetable[5][3]['上课地点']}}</text>
+          </view>
+        </view>
+        <view class='course-col'>
+          <view class='{{courseviewstyle[5][4]}}'>
+            <text>{{coursetable[5][4]['课程名称']}}{{atsymbol[5][4]}}{{coursetable[5][4]['上课地点']}}</text>
+          </view>
+        </view>
+        <view class='course-col'>
+          <view class='{{courseviewstyle[5][5]}}'>
+            <text>{{coursetable[5][5]['课程名称']}}{{atsymbol[5][5]}}{{coursetable[5][5]['上课地点']}}</text>
+          </view>
+        </view>
+        <view class='course-col'>
+          <view class='{{courseviewstyle[5][6]}}'>
+            <text>{{coursetable[5][6]['课程名称']}}{{atsymbol[5][6]}}{{coursetable[5][6]['上课地点']}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</scroll-view>

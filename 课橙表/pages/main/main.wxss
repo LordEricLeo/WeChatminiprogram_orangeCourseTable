@@ -1,0 +1,19 @@
+/* pages/main/main.wxss */
+.father {
+  text-align: center;
+}
+.time {
+  margin-top: 40px;
+  height:  140px;
+  font-size: 70px;
+  color: red;
+}
+.name {
+  height: 60px;
+  font-size: 30px;
+}
+.place {
+  height: 60px;
+  font-size: 30px;
+  margin-bottom: 40px;
+}
