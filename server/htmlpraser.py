@@ -1,39 +1,96 @@
-#!/usr/bin/env python3
-#python脚本由刘子豪创建于2018年9月16日 周日上午11:26
-import re
+from bs4 import BeautifulSoup#第三方库pip install bs4
 import json
-print("这个脚本用来解析抓取到的课表html文件，把html数据解析成json数据")
-print("依赖grabcoursetable.py,userinteraction.py,三个脚本必须放在同一目录中")
-file = open('coursetable.html','r')
-html = file.read()
+
+file = open('F:\\coursetable\\coursetable.html', 'r')
+html_doc = file.read()
 file.close()
-print("=>成功打开coursetable.html")
-#这个函数匹配出每一大节课的课表信息，分割成每一天的某一大节的课表信息，再分割成每一节课的各种具体信息
-def praseByRow( row ):
-    row = str(row)
-    regex = '<div id="' + row + '-.-2.*>'
-    pattern = re.compile(regex)
-    temp = pattern.findall(html)
-    resultlist = []
-    for tm in temp:
-        pattern = re.compile('[\d-]*,?[\d-]*[\u4e00-\u9fa5]+[\d()\[-]*[\u4e00-\u9fa5]*,?[\u4e00-\u9fa5]*[\d\]()]*[\u4e00-\u9fa5]*[\d()]*')
-        result = pattern.findall(tm)
-        if(result == []):#如果这节没有课，里面的各种具体信息要用''补齐，否则数组访问越界
-            result.append('')
-            result.append('')
-            result.append('')
-            result.append('')
-            result.append('')
-            result.append('')
-        resultlist.append(result)
-    return resultlist
-first = praseByRow(1)#第一大节的课表信息(二维数组)
-second = praseByRow(2)#第二大节的课表信息
-third = praseByRow(3)#第三大节的课表信息
-forth = praseByRow(4)#第四大节的课表信息
-fifth = praseByRow(5)#第五大节的课表信息
-sixth = praseByRow(6)#第六大节的课表信息
-print("=>成功把html解析成list数组")
+soup = BeautifulSoup(html_doc, 'html.parser')
+
+first = []#第一大节的课表信息(二维数组)
+for i in range(7):
+    if(i == 0):
+        j = '7'
+    else:
+        j = str(i)
+    ids = '1-' + j + '-2'
+    course = soup.find(id=ids).find_all(text=True)
+    for i,cs in enumerate(course):
+        course[i] = "".join(cs.split())#去掉&nbsp(\xa0)
+    if(course == ['']):#如果这节没有课，里面的各种具体信息要用''补齐，否则数组访问越界
+        for i in range(5):
+            course.append('')
+    first.append(course)
+second = []#第二大节的课表信息
+for i in range(7):
+    if(i == 0):
+        j = '7'
+    else:
+        j = str(i)
+    ids = '2-' + j + '-2'
+    course = soup.find(id=ids).find_all(text=True)
+    for i,cs in enumerate(course):
+        course[i] = "".join(cs.split())#去掉&nbsp(\xa0)
+    if(course == ['']):#如果这节没有课，里面的各种具体信息要用''补齐，否则数组访问越界
+        for i in range(5):
+            course.append('')
+    second.append(course)
+third = []#第三大节的课表信息
+for i in range(7):
+    if(i == 0):
+        j = '7'
+    else:
+        j = str(i)
+    ids = '3-' + j + '-2'
+    course = soup.find(id=ids).find_all(text=True)
+    for i,cs in enumerate(course):
+        course[i] = "".join(cs.split())#去掉&nbsp(\xa0)
+    if(course == ['']):#如果这节没有课，里面的各种具体信息要用''补齐，否则数组访问越界
+        for i in range(5):
+            course.append('')
+    third.append(course)
+forth = []#第四大节的课表信息
+for i in range(7):
+    if(i == 0):
+        j = '7'
+    else:
+        j = str(i)
+    ids = '4-' + j + '-2'
+    course = soup.find(id=ids).find_all(text=True)
+    for i,cs in enumerate(course):
+        course[i] = "".join(cs.split())#去掉&nbsp(\xa0)
+    if(course == ['']):#如果这节没有课，里面的各种具体信息要用''补齐，否则数组访问越界
+        for i in range(5):
+            course.append('')
+    forth.append(course)
+fifth = []#第五大节的课表信息
+for i in range(7):
+    if(i == 0):
+        j = '7'
+    else:
+        j = str(i)
+    ids = '5-' + j + '-2'
+    course = soup.find(id=ids).find_all(text=True)
+    for i,cs in enumerate(course):
+        course[i] = "".join(cs.split())#去掉&nbsp(\xa0)
+    if(course == ['']):#如果这节没有课，里面的各种具体信息要用''补齐，否则数组访问越界
+        for i in range(5):
+            course.append('')
+    fifth.append(course)
+sixth = []#第六大节的课表信息
+for i in range(7):
+    if(i == 0):
+        j = '7'
+    else:
+        j = str(i)
+    ids = '6-' + j + '-2'
+    course = soup.find(id=ids).find_all(text=True)
+    for i,cs in enumerate(course):
+        course[i] = "".join(cs.split())#去掉&nbsp(\xa0)
+    if(course == ['']):#如果这节没有课，里面的各种具体信息要用''补齐，否则数组访问越界
+        for i in range(5):
+            course.append('')
+    sixth.append(course)
+
 #用json保存和传输一周课表数据,下面是一个json对象
 jsonobject = [
     [
@@ -385,17 +442,9 @@ jsonobject = [
         }
     ]
 ]
-file = open('coursetable.json','w')
+file = open('F:\\coursetable\\coursetable.json','w')
 jsonstring = json.dumps(jsonobject)#把json对象转换为json字符串，以便服务器传输给用户端
 file.write(jsonstring)
 file.close()
 print("=>成功保存json字符串至coursetable.json")
-print("html解析脚本工作完成，由刘子豪提供技术支持")
-file = open('user.txt', 'r')
-username = file.readline()
-username = username[0:len(username)-1]
-file.close()
-filename = username + '.json'
-file = open(filename, 'w')
-file.write(jsonstring)#保存查询日志，以后就不用验证码了
-file.close()
+print("html解析脚本工作完成","刘子豪提供技术支持")
