@@ -1,0 +1,28 @@
+<!--pages/book/book.wxml-->
+<form bindsubmit='search'>
+  <view style='display:flex;flex-direction:row;'>
+    <view style='width:{{screenWidth*0.9}}px;height:{{screenHeight*0.06}}px;border:{{border}}'>
+      <input name='bookname' value='' focus='true' placeholder='请输入图书名称...' style='height:{{screenHeight*0.06}}px;font-size:40rpx;' bindfocus='focus' bindblur='blur'></input>
+    </view>
+    <button form-type='submit' style='width:{{screenWidth*0.2}}px;height:{{screenHeight*0.06}}px;background:#0074D9;'>
+      <image src='/images/search.png' style='width:{{screenWidth*0.1}}px;height:{{screenHeight*0.06}}px'></image>
+    </button>
+  </view>
+</form>
+<scroll-view scroll-y style='width:100%;height:{{screenHeight*0.84}}px;background:whitesmoke;'>
+  <view wx:for='{{book}}' wx:key='{{item}}' style='margin:3% 3% 0 3%;background:white;border-radius:10rpx;'>
+    <view>
+      <text>{{item.title}}</text>
+    </view>
+    <view>
+      <text style='font-size:30rpx;'>{{item.copyright}}</text>
+    </view>
+    <view>
+      <text style='font-size:30rpx;'>{{item.collect}}</text>
+    </view>
+    <view>
+      <text style='font-size:30rpx;'>{{item.index}}</text>
+    </view>
+  </view>
+</scroll-view>
+<view style='position:fixed;top:30%;left:10%;' wx:if='{{noresult}}'>（┭┮﹏┭┮）抱歉，未能找到结果</view>

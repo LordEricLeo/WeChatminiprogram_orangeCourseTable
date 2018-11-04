@@ -1,0 +1,30 @@
+<!--pages/main/main.wxml-->
+<view>
+  <!--下节将要上的课-->
+</view>
+<view style='margin:40% 0 0 10%'>
+  <image src='/images/course.png' style='width:{{screenWidth*0.3}}px;height:{{screenHeight*0.18}}px' bindtap='course'></image>
+  <!--课程表-->
+  <image src='/images/card.png' style='width:{{screenWidth*0.5}}px;height:{{screenHeight*0.18}}px' bindtap='card'></image>
+  <!--校园卡-->
+  <image src='/images/classroom.png' style='width:{{screenWidth*0.5}}px;height:{{screenHeight*0.18}}px' bindtap='classroom'></image>
+  <!--空闲教室-->
+  <image src='/images/score.png' style='width:{{screenWidth*0.3}}px;height:{{screenHeight*0.18}}px' bindtap='score'></image>
+  <!--成绩单-->
+  <view>
+    <image src='/images/sports.png' style='width:{{screenWidth*0.2}}px;height:{{screenHeight*0.1}}px' bindtap='sports'></image>
+    <!--体测-->
+    <image src='/images/book.png' style='width:{{screenWidth*0.2}}px;height:{{screenHeight*0.1}}px' bindtap='book'></image>
+    <!--图书馆藏-->
+    <image src='/images/set.png' style='width:{{screenWidth*0.2}}px;height:{{screenHeight*0.1}}px' bindtap='setting'></image>
+    <!--设置-->
+  </view>
+</view>
+<!--菜单-->
+<view style='display:flex;flex-direction:row;margin:10% 0 0 5%'>
+  <image src='/images/orange_logo.png' style='width:{{screenWidth*0.06}}px;height:{{screenHeight*0.033}}px;'></image>
+  <view>
+    <text style='font-size:28rpx;color:#AAAAAA'>Developed by LiuZihao(Eric). All Rights Reserved.</text>
+  </view>
+</view>
+<!--版权信息-->

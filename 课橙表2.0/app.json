@@ -1,0 +1,18 @@
+{
+  "pages": [
+    "pages/main/main",
+    "pages/login/login",
+    "pages/coursetable/coursetable",
+    "pages/classroom/classroom",
+    "pages/sports/sports",
+    "pages/book/book",
+    "pages/score/score",
+    "pages/set/set"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#0074D9",
+    "navigationBarTitleText": "课橙表",
+    "navigationBarTextStyle": "white"
+  }
+}

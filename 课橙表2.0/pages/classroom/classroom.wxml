@@ -1,0 +1,44 @@
+<!--pages/classroom/classroom.wxml-->
+<view style='position:fixed;bottom:0;display:flex;flex-direction:row;width:100%;height:{{screenHeight*0.1}}px;;'>
+  <view style='width:16.7%;padding-top:5%;background:{{stylelist[i].bg}}' wx:for='{{["一","二","三","四","五","六"]}}' wx:for-item='class' wx:key='{{class}}' wx:for-index='i' bindtap='course' data-i='{{i}}'>
+    <text style='color:{{stylelist[i].ft}}'>第{{class}}节</text>
+  </view>
+</view>
+<scroll-view scroll-y style='width:100%;height:{{screenHeight*0.8}}px;'>
+  <view style='text-align:center;background:#AAAAAA;'>
+    <text style='font-size:32rpx;'>南教空闲</text>
+  </view>
+  <view style='width:100%;height:{{screenHeight*0.19}}px;border:1px solid #AAAAAA;border-radius:10rpx'>
+    <text style='font-size:28rpx;'>{{classroom['南教空闲']}}</text>
+  </view>
+  <view style='text-align:center;background:#AAAAAA;'>
+    <text style='font-size:32rpx;'>南堂空闲</text>
+  </view>
+  <view style='width:100%;height:{{screenHeight*0.19}}px;border:1px solid #AAAAAA;border-radius:10rpx'>
+    <text style='font-size:28rpx;'>{{classroom['南堂空闲']}}</text>
+  </view>
+  <view style='text-align:center;background:#AAAAAA;'>
+    <text style='font-size:32rpx;'>东环空闲</text>
+  </view>
+  <view style='width:100%;height:{{screenHeight*0.19}}px;border:1px solid #AAAAAA;border-radius:10rpx'>
+    <text style='font-size:28rpx;'>{{classroom['东环空闲']}}</text>
+  </view>
+  <view style='text-align:center;background:#AAAAAA;'>
+    <text style='font-size:32rpx;'>西环空闲</text>
+  </view>
+  <view style='width:100%;height:{{screenHeight*0.19}}px;border:1px solid #AAAAAA;border-radius:10rpx'>
+    <text style='font-size:28rpx;'>{{classroom['西环空闲']}}</text>
+  </view>
+  <view style='text-align:center;background:#AAAAAA;'>
+    <text style='font-size:32rpx;'>东廊空闲</text>
+  </view>
+  <view style='width:100%;height:{{screenHeight*0.19}}px;border:1px solid #AAAAAA;border-radius:10rpx'>
+    <text style='font-size:28rpx;'>{{classroom['东廊空闲']}}</text>
+  </view>
+  <view style='text-align:center;background:#AAAAAA;'>
+    <text style='font-size:32rpx;'>西廊空闲</text>
+  </view>
+  <view style='width:100%;height:{{screenHeight*0.19}}px;border:1px solid #AAAAAA;border-radius:10rpx'>
+    <text style='font-size:28rpx;'>{{classroom['西廊空闲']}}</text>
+  </view>
+</scroll-view>

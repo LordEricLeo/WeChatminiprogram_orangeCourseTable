@@ -1,0 +1,75 @@
+<!--pages/coursetable/coursetable.wxml-->
+<view style='width:100%;height:{{screenHeight*0.08}}px;'>
+  <view style='display:flex;flex-direction:row'>
+    <view style='width:9%;'>
+      <text style='font-size:36rpx'>{{month}}月</text>
+    </view>
+    <!--月-->
+    <view>
+      <view style='display:flex;flex-direction:row;width:100%;height:50%;'>
+        <view wx:for='{{["周日","周一","周二","周三","周四","周五","周六"]}}' wx:for-item='weekday' wx:key='{{weekday}}' style='width:{{screenWidth*0.13}}px;'>
+          <text>{{weekday}}</text>
+        </view>
+      </view>
+      <!--周-->
+      <view style='display:flex;flex-direction:row;width:100%;height:50%;'>
+        <view wx:for='{{days}}' wx:for-item='day' wx:key='{{day}}' style='width:{{screenWidth*0.13}}px;text-align:center'>
+          <text>{{day}}</text>
+        </view>
+      </view>
+      <!--日-->
+    </view>
+  </view>
+</view>
+<!--顶部星期日期月份导航栏-->
+<scroll-view scroll-y style='width:100%;height:{{screenHeight*0.82}}px;'>
+  <view style='display:flex;flex-direction:row;'>
+    <view style='width:9%;height:100%;'>
+      <view wx:for='{{["8:00","10:10","14:00","16:10","19:00","21:00"]}}' wx:for-item='time' wx:key='{{time}}' style='height:{{screenHeight*0.155}}px;'>
+        <text style='font-size:28rpx'>{{time}}</text>
+      </view>
+    </view>
+    <!--侧边时间导航栏-->
+    <view style='display:flex;flex-direction:row;'>
+      <view wx:for='{{course}}' wx:for-item='col' wx:for-index='i' wx:key='{{col}}' style='width:{{screenWidth*0.13}}px;height:100%;'>
+        <view wx:for='{{col}}' wx:for-item='row' wx:for-index='j' wx:key='{{row}}' style='height:{{screenHeight*0.155}}px;border-radius:10rpx;border:2rpx solid white;background:{{row.bg}}' bindtap='showDetailCourse' data-i='{{i}}' data-j='{{j}}'>
+          <text style='font-size:30rpx;color:white;'>{{row.course_name}}{{row.at}}{{row.location}}</text>
+        </view>
+        <!--行-->
+      </view>
+      <!--列-->
+    </view>
+    <!--课表-->
+  </view>
+</scroll-view>
+<!--滚动-->
+
+<view wx:if='{{detailShow}}' style='position:fixed;top:0;width:100%;height:{{screenHeight}}px;background:black;opacity:0.3' bindtap='hideDetailCourse' catchtouchmove='preventTouchMove'>
+</view>
+<!--详细课表蒙版-->
+<view wx:if='{{detailShow}}' style='position:fixed;top:{{screenHeight*0.2}}px;left:20%;width:60%;height:{{screenHeight*0.4}}px;background:white;border-radius:20rpx;' catchtouchmove='preventTouchMove'>
+  <view style='height:85%;'>
+    <view>
+      <text style='font-size:50rpx;'>{{detailCourse.course_name}}</text>
+    </view>
+    <view>
+      <text>上课地点：{{detailCourse.location}}</text>
+    </view>
+    <view>
+      <text>授课教师：{{detailCourse.teacher}}</text>
+    </view>
+    <view>
+      <text>课程类型：{{detailCourse.course_type}}</text>
+    </view>
+    <view>
+      <text>课程学分：{{detailCourse.credit}}</text>
+    </view>
+    <view>
+      <text>上课周数：{{detailCourse.week}}</text>
+    </view>
+  </view>
+  <view style='text-align:center;border-top:2rpx solid #AAAAAA' bindtap='hideDetailCourse'>
+    <text style='color:#0074D9'>好</text>
+  </view>
+</view>
+<!--详细课表信息-->

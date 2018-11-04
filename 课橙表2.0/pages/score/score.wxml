@@ -1,0 +1,92 @@
+<!--pages/score/score.wxml-->
+<view style='width:100%;height:{{screenHeight*0.17}}px;padding:3% 3% 0 3%'>
+  <view style='height:50%;'>
+    <view style='display:flex;flex-direction:row;'>
+      <view style='width:50%;'>
+        <text>学分绩：{{score.xfjd}}</text>
+      </view>
+      <view style='width:50%;'>
+        <text>GPA：{{score.gpa}}</text>
+      </view>
+    </view>
+    <view style='margin:3% 0 0 33%;'>
+      <text>{{score.xn}}</text>
+    </view>
+  </view>
+  <view style='display:flex;flex-direction:row;margin-top:5%;'>
+    <view wx:for='{{["第一学期","第二学期","第三学期"]}}' wx:for-item='term' wx:for-index='i' wx:key='{{term}}' style='width:34%;border-bottom:1px solid {{stylelist[i]}}' bindtap='changeTab' data-i='{{i}}'>
+      <text style='color:{{stylelist[i]}}'>{{term}}</text>
+    </view>
+  </view>
+</view>
+<scroll-view scroll-y style='width:100%;height:{{screenHeight*0.72}}px;background:whitesmoke'>
+  <view wx:if='{{tab == 1}}'>
+    <view wx:for='{{score.scores[1]}}' wx:for-item='item1' wx:key='{{item1}}' style='margin:3% 3% 0 3%;background:white;border-radius:10rpx;'>
+      <progress percent='{{item1.ZCJ}}' color='{{item1.CLASS}}'></progress>
+      <view style='display:flex;flex-direction:row;'>
+        <view style='width:{{screenWidth*0.3}}px;height:{{screenHeight*0.15}}px;'>
+          <text style='color:{{item1.CLASS}};font-size:100rpx;'>{{item1.ZCJ}}</text>
+        </view>
+        <view style='margin-top:5%;'>
+          <view>
+            <text>{{item1.KCMC}}</text>
+          </view>
+          <view style='display:flex;flex-direction:row;'>
+            <view style='width:200rpx'>
+              <text>学分：{{item1.XF}}</text>
+            </view>
+            <view>
+              <text>GPA：{{item1.JD}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view wx:if='{{tab == 2}}'>
+    <view wx:for='{{score.scores[2]}}' wx:for-item='item2' wx:key='{{item2}}' style='margin:3% 3% 0 3%;background:white;border-radius:10rpx;'>
+      <progress percent='{{item2.ZCJ}}' color='{{item2.CLASS}}'></progress>
+      <view style='display:flex;flex-direction:row;'>
+        <view style='width:{{screenWidth*0.3}}px;height:{{screenHeight*0.15}}px;'>
+          <text style='color:{{item2.CLASS}};font-size:100rpx;'>{{item2.ZCJ}}</text>
+        </view>
+        <view style='margin-top:5%;'>
+          <view>
+            <text>{{item2.KCMC}}</text>
+          </view>
+          <view style='display:flex;flex-direction:row'>
+            <view style='width:200rpx'>
+              <text>学分：{{item2.XF}}</text>
+            </view>
+            <view>
+              <text>GPA：{{item2.JD}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view wx:if='{{tab == 3}}'>
+    <view wx:for='{{score.scores[3]}}' wx:for-item='item3' wx:key='{{item3}}' style='margin:3% 3% 0 3%;background:white;border-radius:10rpx;'>
+      <progress percent='{{item3.ZCJ}}' color='{{item3.CLASS}}'></progress>
+      <view style='display:flex;flex-direction:row;'>
+        <view style='width:{{screenWidth*0.3}}px;height:{{screenHeight*0.15}}px;'>
+          <text style='color:{{item3.CLASS}};font-size:100rpx;'>{{item3.ZCJ}}</text>
+        </view>
+        <view style='margin-top:5%;'>
+          <view>
+            <text>{{item3.KCMC}}</text>
+          </view>
+          <view style='display:flex;flex-direction:row;'>
+            <view style='width:200rpx'>
+              <text>学分：{{item3.XF}}</text>
+            </view>
+            <view>
+              <text>GPA：{{item3.JD}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</scroll-view>

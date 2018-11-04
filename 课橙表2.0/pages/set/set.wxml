@@ -1,0 +1,21 @@
+<!--pages/set/set.wxml-->
+<view style='display:flex;flex-direction:row;border-top:1px solid #AAAAAA;border-bottom:1px solid #AAAAAA;background:white;height:80rpx;width:100%;'>
+  <view style='margin:10rpx;width:70%;'>
+    <text>将课表设为首页</text>
+  </view>
+  <switch bindchange='course' checked='{{first}}'></switch>
+</view>
+<view style='display:flex;flex-direction:row;border-top:1px solid #AAAAAA;border-bottom:1px solid #AAAAAA;background:white;height:80rpx;width:100%;' bindtap='connect'>
+  <view style='margin:10rpx 0 0 40%;'>
+    <text>联系作者</text>
+  </view>
+</view>
+<view style='display:flex;flex-direction:row;border-top:1px solid #AAAAAA;border-bottom:1px solid #AAAAAA;background:white;height:80rpx;width:100%;' bindtap='logout'>
+  <view style='margin:10rpx 0 0 40%;'>
+    <text>退出登录</text>
+  </view>
+</view>
+
+<view wx:if='{{tips}}' style='background:white;'>
+  <text>提示：\n已成功把留言网址复制到粘贴板，将网址粘贴到浏览器中，以向我留言。如果有合作意向，改进建议，或者想找我玩儿，欢迎随时留言~(゜-゜)つロ</text>
+</view>

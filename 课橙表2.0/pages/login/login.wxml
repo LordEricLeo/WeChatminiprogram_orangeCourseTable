@@ -1,0 +1,22 @@
+<!--pages/login/login.wxml-->
+<view style='display:flex;flex-direction:row;margin:20% 0 10% 5%'>
+  <image src='/images/upc_logo.png' style='width:{{screenWidth*0.2}}px;height:{{screenHeight*0.1}}px'></image>
+  <!--校徽图片-->
+  <view style='margin:3% 0 0 0'>
+    <text style='font-size:60rpx;'>中国石油大学(华东)</text>
+  </view>
+  <!--学校名称-->
+</view>
+<form bindsubmit='formSubmit'>
+  <view style='margin:0 5% 5% 5%;background:#EFEFEF;'>
+    <input name='username' focus='true' type='number' value='' placeholder='请输入学号' style='height:90rpx;font-size:80rpx;text-align:center;' placeholder-style='font-size:40rpx;'></input>
+  </view>
+  <!--学号-->
+  <view style='margin:0 5% 5% 5%;background:#EFEFEF;'>
+    <input name='password' password='true' value='' placeholder='密码(数字石大密码)' style='height:90rpx;font-size:80rpx;text-align:center;' placeholder-style='font-size:40rpx;'></input>
+  </view>
+  <!--密码-->
+  <button form-type='submit' style='background:#0074D9;color:white;margin-top:20%;'>登录</button>
+  <!--登录按钮-->
+</form>
+<!--表单-->
