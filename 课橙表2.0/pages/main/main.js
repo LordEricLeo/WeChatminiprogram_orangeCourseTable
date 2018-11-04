@@ -54,10 +54,19 @@ Page({
                   } else if (tempclass[i][j].lessons == '01020304') {
                     result[i][0] = tempclass[i][j]
                     result[i][1] = tempclass[i][j]
-                  } else if (tempclass[i][j].lessons == '05060708') {
+                  } else if (tempclass[i][j].lessons == '010203') {
+                    result[i][0] = tempclass[i][j]
+                    result[i][1] = tempclass[i][j]
+                  }else if (tempclass[i][j].lessons == '05060708') {
                     result[i][2] = tempclass[i][j]
                     result[i][3] = tempclass[i][j]
-                  } else if (tempclass[i][j].lessons == '09101112') {
+                  } else if (tempclass[i][j].lessons == '050607') {
+                    result[i][2] = tempclass[i][j]
+                    result[i][3] = tempclass[i][j]
+                  }else if (tempclass[i][j].lessons == '09101112') {
+                    result[i][4] = tempclass[i][j]
+                    result[i][5] = tempclass[i][j]
+                  } else if (tempclass[i][j].lessons == '091011') {
                     result[i][4] = tempclass[i][j]
                     result[i][5] = tempclass[i][j]
                   } else if (tempclass[i][j].lessons == '0102030405060708') {
