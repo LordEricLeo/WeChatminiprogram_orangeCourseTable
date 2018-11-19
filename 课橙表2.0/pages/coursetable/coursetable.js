@@ -16,15 +16,18 @@ Page({
   onLoad: function(options) {
     let month = new Date().getMonth() + 1
     //获取近七天的日期
-    function getDay(i) {
+    function getRecentDay(i) {
       let date = new Date()
       let date_ms = date.getTime() + 1000 * 60 * 60 * 24 * i
       date.setTime(date_ms)
       return date.getDate()
     }
     let days = []
-    for (let i = 0; i < 7; i++) {
-      days.push(getDay(i))
+    for (let i = new Date().getDay(); i > 0; i--) {
+      days.push(getRecentDay(-i))
+    }
+    for (let i = 0; i < 7 - new Date().getDay(); i++) {
+      days.push(getRecentDay(i))
     }
     /*获取标准格式课表信息：
     1）将课程名改为六个字以内

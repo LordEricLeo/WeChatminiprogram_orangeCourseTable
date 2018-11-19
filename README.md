@@ -6,8 +6,6 @@
 
 接下来要做的是把未完成的校园卡功能完成，做分周课表（可以查看下一周的课表
 空闲教室，空闲教室数量特别少时，查询不出来，在setData()的前面卡住了，bug
-The title of set page is wrong.You need to change it to “shezhi” and config the json file to prevent scroll page.
-小程序日期前端有问题
 
 1.0(beta) 2018-09-22 15:40:00
 
