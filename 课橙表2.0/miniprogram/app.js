@@ -3,6 +3,7 @@ App({
   onLaunch: function() {
     const phone = wx.getSystemInfoSync()
 
+    wx.cloud.init({
       env: 'test-6c81b6',
       traceUser: true
     })
