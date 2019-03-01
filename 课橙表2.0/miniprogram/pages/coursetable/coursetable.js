@@ -7,7 +7,8 @@ Page({
    */
   data: {
     screenWidth: app.globalData.screenWidth,
-    screenHeight: app.globalData.screenHeight
+    screenHeight: app.globalData.screenHeight,
+    hide: false
   },
 
   /**
@@ -94,5 +95,10 @@ Page({
   },
   preventTouchMove: function() {
     //什么也不做来组织滑动触摸传递
+  },
+  changeHide: function(e) {
+    this.setData({
+      hide: !this.data.hide
+    })
   }
 })

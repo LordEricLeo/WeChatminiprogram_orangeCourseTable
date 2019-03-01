@@ -22,6 +22,12 @@
   </view>
 </view>
 <!--顶部星期日期月份导航栏-->
+<view wx:if='{{hide}}' style='width:100%;height:{{screenHeight*0.1}}px;background:red;'>
+  <view>
+    <image src='/images/last.png' style='width:5%;height:5%;'></image>
+  </view>
+</view>
+<!--隐藏上下周-->
 <scroll-view scroll-y style='width:100%;height:{{screenHeight*0.82}}px;'>
   <view style='display:flex;flex-direction:row;'>
     <view style='width:9%;height:100%;'>

@@ -1,0 +1,4 @@
+/* pages/set/leavingmessage/leavingmessage.wxss */
+button::after {
+  border: none;
+}

@@ -19,6 +19,7 @@ Page({
         title: '请稍侯...',
       })
       let user = wx.getStorageSync('user')
+      app.globalData.username = user.username
       wx.request({
         url: 'https://www.hilzh.xyz/upc/course',
         data: {

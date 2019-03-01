@@ -1,5 +1,7 @@
 {
 	"description": "项目配置文件",
+  "miniprogramRoot": "miniprogram/",
+  "cloudfunctionRoot": "cloudfunctions/",
 	"packOptions": {
 		"ignore": []
 	},
@@ -11,7 +13,7 @@
 		"newFeature": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.0.4",
+	"libVersion": "2.2.5",
 	"appid": "wxea1755f395afe942",
 	"projectname": "%E8%AF%BE%E6%A9%99%E8%A1%A8",
 	"debugOptions": {

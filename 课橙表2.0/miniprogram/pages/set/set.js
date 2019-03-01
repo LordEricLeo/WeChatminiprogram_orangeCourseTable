@@ -28,13 +28,8 @@ Page({
     wx.setStorageSync('first', first)
   },
   connect: function() {
-    wx.setClipboardData({
-      data: 'https://www.hilzh.xyz/leavingmessage/',
-      success: () => {
-        this.setData({
-          tips: true
-        })
-      }
+    wx.navigateTo({
+      url: 'leavingmessage/leavingmessage',
     })
   },
   logout: function() {

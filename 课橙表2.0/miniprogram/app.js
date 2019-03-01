@@ -1,9 +1,8 @@
 //app.js
 App({
-  onLaunch: function () {
+  onLaunch: function() {
     const phone = wx.getSystemInfoSync()
 
-    wx.cloud.init({
       env: 'test-6c81b6',
       traceUser: true
     })
@@ -20,7 +19,7 @@ App({
       db: db
     }
   },
-  openid: function () {
+  openid: function() {
     wx.cloud.callFunction({
       name: 'login',
       success: res => {

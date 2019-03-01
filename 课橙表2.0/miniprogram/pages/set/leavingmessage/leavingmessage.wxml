@@ -1,0 +1,40 @@
+<!--pages/set/leavingmessage/leavingmessage.wxml-->
+<view style='width:{{screenWidth}}px;height:{{screenHeight}}px;'>
+  <scroll-view scroll-y style='width:100%;height:83%;'>
+    <view wx:for='{{messages}}' wx:for-item='message' wx:key='message' style='width:100%;height:30%;padding:30rpx;'>
+      <view style='display:flex;flex-direction:row;'>
+        <image src='{{message.avatarUrl}}' style='width:70rpx;height:70rpx;border-radius:50%;'></image>
+        <view style='position:relative;left:20rpx;'>
+          <view>{{message.username}}</view>
+          <view style='font-size:26rpx;color:#8A8A8A'>{{message.time}}</view>
+        </view>
+        <view wx:if='{{admini}}' style='position:relative;left:100rpx;top:-20rpx;'>
+          <view>{{message.qq}}</view>
+          <view style='font-size:26rpx;color:#8A8A8A'>{{message.stuid}}
+            <text style='color:#0074D9'>{{message.gender}}</text>
+          </view>
+        </view>
+      </view>
+      <view>{{message.content}}</view>
+    </view>
+  </scroll-view>
+  <view wx:if='{{bottomBarShow}}' style='position:fixed;bottom:0;width:100%;height:7%;text-align:center;'>
+    <button open-type='getUserInfo' bindgetuserinfo='getUserInfo' bindtap='add' style='background:#0074D9;'>
+      <image src='/images/add.png' style='width:70rpx;height:70rpx;'></image>
+    </button>
+  </view>
+  <view wx:if='{{inputBoxShow}}' style='position:fixed;bottom:0;width:100%;height:40%;background:red;'>
+    <view style='position:fixed;top:0;width:100%;height:60%;background:black;opacity:0.3;'></view>
+    <form bindsubmit='form'>
+      <view style='width:100%;height:15%;background:#0074D9;display:flex;flex-direction:row;'>
+        <button style='position:relative;left:-70rpx;color:#8A8A8A' bindtap='cancel'>取消</button>
+        <switch color='#0074D9' style='color:white;font-size:30rpx;' bindchange='nick'>匿名发表</switch>
+        <button style='position:relative;left:70rpx;color:#0074D9;' form-type='submit'>发表</button>
+      </view>
+      <view style='width:100%;height:85%;background:white;'>
+        <textarea name='content' fixed='true' placeholder='留下几句话吧~😄' placeholder-style='font-size:30rpx;' style='width:90%;height:66%;;padding:40rpx;'></textarea>
+        <input name='qq' type='number' placeholder='留下qq以便联系（并不会让其他用户看到）' placeholder-style='font-size:20rpx;' style='width:50%;padding: 0 40rpx;border:2rpx solid #AAAAAA;border-radius:20rpx;position:relative;left:150rpx;'></input>
+      </view>
+    </form>
+  </view>
+</view>
