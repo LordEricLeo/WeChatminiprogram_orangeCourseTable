@@ -1,0 +1,22 @@
+<!--components/navbar/navbar.wxml-->
+<view style='width:{{screenWidth}}px;height:{{screenHeight*0.1}}px;background:{{color}};'>
+  <!--标题-->
+  <view style='position:relative;top:30%;width:100%;height:80rpx;text-align:center;'>
+    <view style='position:relative;top:20rpx;'>
+      <text style='font-size:36rpx;color:white;'>{{title}}</text>
+    </view>
+  </view>
+  <!--上周下周课表按钮-->
+  <view wx:if='{{course}}' style='position:fixed;top:3%;width:100%;height:80rpx;display:flex;flex-direction:row;'>
+    <view style='position:relative;left:200rpx;' bindtap='last'>
+      <image src='/images/last.png' style='width:60rpx;height:60rpx;margin:10rpx 20rpx;'></image>
+    </view>
+    <view style='position:relative;left:350rpx' bindtap='next'>
+      <image src='/images/next.png' style='width:60rpx;height:60rpx;margin:10rpx 20rpx;'></image>
+    </view>
+  </view>
+  <!--返回按钮-->
+  <view wx:if='{{navback}}' style='position:fixed;top:3%;width:120rpx;height:80rpx;' bindtap='back'>
+    <image src='/images/back.png' style='width:40rpx;height:60rpx;margin:10rpx 20rpx;'></image>
+  </view>
+</view>

@@ -1,4 +1,5 @@
 <!--pages/login/login.wxml-->
+<navbar title='登录'></navbar>
 <view style='display:flex;flex-direction:row;margin:20% 0 10% 5%'>
   <image src='/images/upc_logo.png' style='width:{{screenWidth*0.2}}px;height:{{screenHeight*0.1}}px'></image>
   <!--校徽图片-->

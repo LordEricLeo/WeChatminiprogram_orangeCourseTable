@@ -1,4 +1,6 @@
 {
   "disableScroll": true,
-  "navigationBarTitleText": "成绩单"
+  "usingComponents": {
+    "navbar": "/components/navbar/navbar"
+  }
 }

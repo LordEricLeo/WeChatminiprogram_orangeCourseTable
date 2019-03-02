@@ -1,4 +1,6 @@
 {
   "disableScroll": true,
-  "navigationBarTitleText": "石大帮"
+  "usingComponents": {
+    "navbar": "/components/navbar/navbar"
+  }
 }

@@ -1,4 +1,5 @@
 <!--pages/score/score.wxml-->
+<navbar navback='true' title='成绩单'></navbar>
 <view style='width:100%;height:{{screenHeight*0.17}}px;padding:3% 3% 0 3%'>
   <view style='height:50%;'>
     <view style='display:flex;flex-direction:row;'>

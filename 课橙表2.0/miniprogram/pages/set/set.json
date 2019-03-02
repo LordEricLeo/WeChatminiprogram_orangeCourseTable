@@ -1,4 +1,6 @@
 {
   "disableScroll": true,
-  "navigationBarTitleText": "设置"
+  "usingComponents": {
+    "navbar": "/components/navbar/navbar"
+  }
 }

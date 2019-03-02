@@ -1,5 +1,7 @@
 {
   "disableScroll": true,
   "enablePullDownRefresh": true,
-  "navigationBarTitleText": "留言区"
+  "usingComponents": {
+    "navbar": "/components/navbar/navbar"
+  }
 }

@@ -1,4 +1,5 @@
 <!--pages/main/main.wxml-->
+<navbar title='石大帮'></navbar>
 <view>
   <!--下节将要上的课-->
 </view>

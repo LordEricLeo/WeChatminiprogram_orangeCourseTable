@@ -1,4 +1,6 @@
 {
   "disableScroll": true,
-  "navigationBarTitleText": "图书馆藏"
+  "usingComponents": {
+    "navbar": "/components/navbar/navbar"
+  }
 }

@@ -1,4 +1,5 @@
 <!--pages/set/set.wxml-->
+<navbar navback='true' title='设置'></navbar>
 <view style='margin-top:40rpx;'>
   <view style='display:flex;flex-direction:row;border-top:2rpx solid #AAAAAA;border-bottom:2rpx solid #AAAAAA;background:white;height:84rpx;width:100%;'>
     <view style='margin:10rpx;width:70%;'>

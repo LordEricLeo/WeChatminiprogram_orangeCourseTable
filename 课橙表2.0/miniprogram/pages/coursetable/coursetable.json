@@ -1,4 +1,7 @@
 {
   "disableScroll": true,
-  "navigationBarTitleText": "课表"
+  "navigationBarTitleText": "课表",
+  "usingComponents": {
+    "navbar": "/components/navbar/navbar"
+  }
 }

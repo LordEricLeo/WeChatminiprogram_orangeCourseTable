@@ -1,4 +1,6 @@
 {
   "disableScroll": true,
-  "navigationBarTitleText": "登录"
+  "usingComponents": {
+    "navbar": "/components/navbar/navbar"
+  }
 }

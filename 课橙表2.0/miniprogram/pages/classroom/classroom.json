@@ -1,4 +1,6 @@
 {
   "disableScroll": true,
-  "navigationBarTitleText": "空闲教室"
+  "usingComponents": {
+    "navbar": "/components/navbar/navbar"
+  }
 }

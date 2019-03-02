@@ -1,4 +1,5 @@
 <!--pages/book/book.wxml-->
+<navbar navback='true' title='图书馆藏'></navbar>
 <form bindsubmit='search'>
   <view style='display:flex;flex-direction:row;'>
     <view style='width:{{screenWidth*0.9}}px;height:{{screenHeight*0.06}}px;border:{{border}}'>

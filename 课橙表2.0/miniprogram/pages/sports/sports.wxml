@@ -1,4 +1,5 @@
 <!--pages/sports/sports.wxml-->
+<navbar navback='true' title='体测'></navbar>
 <view style='text-align:center;'>
   <view style='margin-top:100rpx;'>
     <text>体测二维码</text>

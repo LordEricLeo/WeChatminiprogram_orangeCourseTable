@@ -1,4 +1,6 @@
 {
   "disableScroll": true,
-  "navigationBarTitleText": "体测"
+  "usingComponents": {
+    "navbar": "/components/navbar/navbar"
+  }
 }
