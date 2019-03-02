@@ -1,7 +1,6 @@
 // pages/coursetable/coursetable.js
 const app = getApp()
 const db = app.globalData.db
-let course
 let memoI
 let memoJ
 let colorlist = ['#0074D9', '#7FDBFF', '#3D9970', '#39CCCC', '#FFDC00', '#FF4136', '#B10DC9']
@@ -22,7 +21,45 @@ Page({
    */
   onLoad: function(options) {
     this.backgroundImage()
-    this.queryCourse(app.globalData.week)
+    if (wx.getStorageSync('course')) {
+      db.collection('user').get({
+        success: res => {
+          let differdays = new Date().getTime() - res.data[0].lastTime.getTime()
+          differdays = Math.floor(differdays / (1000 * 60 * 60 * 24))
+          db.collection('settings').get({
+            success: r => {
+              let difdays = new Date().getTime() - r.data[0].termBeginDate.getTime()
+              difdays = Math.floor(difdays / (1000 * 60 * 60 * 24))
+              this.week = Math.floor(difdays / 7) + 1
+              this.year = r.data[0].termYear
+              this.term = r.data[0].term
+              //一天之内不用查询课表,直接用缓存
+              if (differdays < 1 && this.week == wx.getStorageSync('chooseWeek')) {
+                this.setData({
+                  week: this.week
+                })
+                let course = wx.getStorageSync('course')
+                this.formatCourse(course)
+              } else {
+                this.dbSettings()
+                db.collection('user').doc(res.data[0]._id).update({
+                  data: {
+                    lastTime: new Date()
+                  }
+                })
+              }
+            }
+          })
+        }
+      })
+    } else {
+      this.dbSettings()
+      db.collection('user').add({
+        data: {
+          lastTime: new Date()
+        }
+      })
+    }
     this.dbMemo()
   },
 
@@ -33,81 +70,109 @@ Page({
 
   },
 
-  queryCourse: function(week) {
+  dbSettings: function() {
+    db.collection('settings').get({
+      success: res => {
+        let differdays = new Date().getTime() - res.data[0].termBeginDate.getTime()
+        differdays = Math.floor(differdays / (1000 * 60 * 60 * 24))
+        this.week = Math.floor(differdays / 7) + 1
+        this.year = res.data[0].termYear
+        this.term = res.data[0].term
+        this.queryCourse(this.week, this.year, this.term)
+      }
+    })
+  },
+
+  queryCourse: function(week, year, term) {
     this.setData({
       week: week
     })
+    wx.setStorageSync('chooseWeek', this.data.week)
     let user = wx.getStorageSync('user')
     wx.request({
       url: 'https://www.hilzh.xyz/upc/course',
       data: {
         username: user.username,
         password: user.password,
-        week: week
+        week: week,
+        year: year,
+        term: term
       },
       success: res => {
-        return res.statusCode
-        if (res.data.errcode >= 0) {
-          //把没有课程的课用null补全
-          function complete(tempclass) {
-            let result = []
-            for (let i = 0; i < 7; i++) {
-              let temp = []
-              for (let j = 0; j < 6; j++) {
-                temp.push(null)
-              }
-              result.push(temp)
-            }
-            for (let i = 0; i < tempclass.length; i++) {
-              for (let j = 0; j < tempclass[i].length; j++) {
-                if (tempclass[i][j].lessons == '0102') {
-                  result[i][0] = tempclass[i][j]
-                } else if (tempclass[i][j].lessons == '0304') {
-                  result[i][1] = tempclass[i][j]
-                } else if (tempclass[i][j].lessons == '0506') {
-                  result[i][2] = tempclass[i][j]
-                } else if (tempclass[i][j].lessons == '0708') {
-                  result[i][3] = tempclass[i][j]
-                } else if (tempclass[i][j].lessons == '0910') {
-                  result[i][4] = tempclass[i][j]
-                } else if (tempclass[i][j].lessons == '1112') {
-                  result[i][5] = tempclass[i][j]
-                } else if (tempclass[i][j].lessons == '01020304') {
-                  result[i][0] = tempclass[i][j]
-                  result[i][1] = tempclass[i][j]
-                } else if (tempclass[i][j].lessons == '010203') {
-                  result[i][0] = tempclass[i][j]
-                  result[i][1] = tempclass[i][j]
-                } else if (tempclass[i][j].lessons == '05060708') {
-                  result[i][2] = tempclass[i][j]
-                  result[i][3] = tempclass[i][j]
-                } else if (tempclass[i][j].lessons == '050607') {
-                  result[i][2] = tempclass[i][j]
-                  result[i][3] = tempclass[i][j]
-                } else if (tempclass[i][j].lessons == '09101112') {
-                  result[i][4] = tempclass[i][j]
-                  result[i][5] = tempclass[i][j]
-                } else if (tempclass[i][j].lessons == '091011') {
-                  result[i][4] = tempclass[i][j]
-                  result[i][5] = tempclass[i][j]
-                } else if (tempclass[i][j].lessons == '0102030405060708') {
-                  result[i][0] = tempclass[i][j]
-                  result[i][1] = tempclass[i][j]
-                  result[i][2] = tempclass[i][j]
-                  result[i][3] = tempclass[i][j]
-                }
-              }
-            }
-            return result
+        if (res.statusCode == 200) {
+          if (res.data.errcode >= 0) {
+            this.completeCourse(res.data.class)
           }
-          course = complete(res.data.class)
-          this.formatCourse()
+        } else {
+          wx.showToast({
+            title: '当前为最后一周',
+            image: '/images/warning.png'
+          })
+          this.queryCourse(this.data.week - 1, this.year, this.term)
         }
       }
     })
   },
 
-  formatCourse: function() {
+  completeCourse: function(prototypeCourse) {
+    //把没有课程的课用null补全
+    function complete(tempclass) {
+      let result = []
+      for (let i = 0; i < 7; i++) {
+        let temp = []
+        for (let j = 0; j < 6; j++) {
+          temp.push(null)
+        }
+        result.push(temp)
+      }
+      for (let i = 0; i < tempclass.length; i++) {
+        for (let j = 0; j < tempclass[i].length; j++) {
+          if (tempclass[i][j].lessons == '0102') {
+            result[i][0] = tempclass[i][j]
+          } else if (tempclass[i][j].lessons == '0304') {
+            result[i][1] = tempclass[i][j]
+          } else if (tempclass[i][j].lessons == '0506') {
+            result[i][2] = tempclass[i][j]
+          } else if (tempclass[i][j].lessons == '0708') {
+            result[i][3] = tempclass[i][j]
+          } else if (tempclass[i][j].lessons == '0910') {
+            result[i][4] = tempclass[i][j]
+          } else if (tempclass[i][j].lessons == '1112') {
+            result[i][5] = tempclass[i][j]
+          } else if (tempclass[i][j].lessons == '01020304') {
+            result[i][0] = tempclass[i][j]
+            result[i][1] = tempclass[i][j]
+          } else if (tempclass[i][j].lessons == '010203') {
+            result[i][0] = tempclass[i][j]
+            result[i][1] = tempclass[i][j]
+          } else if (tempclass[i][j].lessons == '05060708') {
+            result[i][2] = tempclass[i][j]
+            result[i][3] = tempclass[i][j]
+          } else if (tempclass[i][j].lessons == '050607') {
+            result[i][2] = tempclass[i][j]
+            result[i][3] = tempclass[i][j]
+          } else if (tempclass[i][j].lessons == '09101112') {
+            result[i][4] = tempclass[i][j]
+            result[i][5] = tempclass[i][j]
+          } else if (tempclass[i][j].lessons == '091011') {
+            result[i][4] = tempclass[i][j]
+            result[i][5] = tempclass[i][j]
+          } else if (tempclass[i][j].lessons == '0102030405060708') {
+            result[i][0] = tempclass[i][j]
+            result[i][1] = tempclass[i][j]
+            result[i][2] = tempclass[i][j]
+            result[i][3] = tempclass[i][j]
+          }
+        }
+      }
+      return result
+    }
+    let processCourse = complete(prototypeCourse)
+    wx.setStorageSync('course', processCourse)
+    this.formatCourse(processCourse)
+  },
+
+  formatCourse: function(processCourse) {
     let month = new Date().getMonth() + 1
     //获取近七天的日期
     function getRecentDay(i) {
@@ -161,8 +226,9 @@ Page({
       }
       return formatCourse
     }
+
     this.setData({
-      course: getFormatCourse(course),
+      course: getFormatCourse(processCourse),
       month: month,
       days: days
     })
@@ -174,7 +240,7 @@ Page({
     let j = e.currentTarget.dataset.j
     //有课显示课详细信息
     if (this.data.course[i][j] != null) {
-      let thisCourse = course[i][j]
+      let thisCourse = wx.getStorageSync('course')[i][j]
       let detailCourse = {
         course_name: thisCourse.course_name,
         location: thisCourse.location,
@@ -344,7 +410,7 @@ Page({
   //navbar组件回传的事件
   last: function() {
     if (this.data.week > 1) {
-      this.queryCourse(this.data.week - 1)
+      this.queryCourse(this.data.week - 1, this.year, this.term)
     } else {
       wx.showToast({
         title: '当前已为第一周',
@@ -354,6 +420,6 @@ Page({
   },
   //navbar组件回传的事件
   next: function() {
-    console.log(this.queryCourse(this.data.week + 1))
+    this.queryCourse(this.data.week + 1, this.year, this.term)
   }
 })

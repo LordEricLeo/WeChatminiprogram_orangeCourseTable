@@ -8,7 +8,8 @@
     "pages/book/book",
     "pages/score/score",
     "pages/set/set",
-    "pages/set/leavingmessage/leavingmessage"
+    "pages/set/leavingmessage/leavingmessage",
+    "pages/set/about/about"
   ],
   "window": {
     "backgroundTextStyle": "light",

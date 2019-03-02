@@ -1,5 +1,6 @@
 // pages/main/main.js
 const app = getApp()
+const db = app.globalData.db
 Page({
 
   /**
@@ -22,7 +23,17 @@ Page({
           url: '/pages/coursetable/coursetable',
         })
       }
-      app.globalData.week = 7//算出当前周数
+      //计算当前周数
+      function nowWeek() {
+        db.collection('settings').get({
+          success: res => {
+            let differdays = new Date().getTime() - res.data[0].termBeginDate.getTime()
+            differdays = Math.floor(differdays / (1000 * 60 * 60 * 24))
+            app.globalData.week = Math.floor(differdays / 7) + 1
+          }
+        })
+      }
+      nowWeek()
     } else {
       wx.redirectTo({
         url: '/pages/login/login',

@@ -20,6 +20,11 @@
       <text>我要留言</text>
     </view>
   </view>
+  <view style='border-bottom:2rpx solid #AAAAAA;background:white;height:84rpx;width:100%;text-align:center;' bindtap='about'>
+    <view style='position:relative;top:15rpx;'>
+      <text>关于</text>
+    </view>
+  </view>
   <view style='border-bottom:2rpx solid #AAAAAA;background:white;height:84rpx;width:100%;text-align:center;' bindtap='logout'>
     <view style='position:relative;top:15rpx;'>
       <text>退出登录</text>

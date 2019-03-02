@@ -96,5 +96,10 @@ Page({
         }
       }
     })
+  },
+  about: function() {
+    wx.navigateTo({
+      url: 'about/about',
+    })
   }
 })

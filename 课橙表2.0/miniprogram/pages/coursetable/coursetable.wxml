@@ -40,7 +40,7 @@
       <!--侧边时间导航栏-->
       <view style='display:flex;flex-direction:row;'>
         <view wx:for='{{course}}' wx:for-item='col' wx:for-index='i' wx:key='{{col}}' style='width:{{screenWidth*0.13}}px;height:100%;'>
-          <view wx:for='{{col}}' wx:for-item='row' wx:for-index='j' wx:key='{{row}}' style='height:{{screenHeight*0.155}}px;border-radius:10rpx;border:2rpx solid white;background:{{row.bg}};background:{{memos[i][j].bg}}' bindtap='showDetailCourse' data-i='{{i}}' data-j='{{j}}'>
+          <view wx:for='{{col}}' wx:for-item='row' wx:for-index='j' wx:key='{{row}}' style='height:{{screenHeight*0.155}}px;border-radius:10rpx;background:{{row.bg}};background:{{memos[i][j].bg}}' bindtap='showDetailCourse' data-i='{{i}}' data-j='{{j}}'>
             <text style='font-size:30rpx;color:white;'>{{row.course_name}}{{row.at}}{{row.location}}{{memos[i][j].content}}</text>
           </view>
           <!--行-->
