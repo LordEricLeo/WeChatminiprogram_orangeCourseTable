@@ -1,4 +1,5 @@
 /* pages/set/set.wxss */
+
 page {
-  background: whitesmoke;
+  background: #f6f6f6;
 }

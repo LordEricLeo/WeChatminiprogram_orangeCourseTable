@@ -13,14 +13,15 @@ Page({
     screenHeight: app.globalData.screenHeight,
     bottomBarShow: true,
     inputBoxShow: false,
-    admini: false
+    admini: false,
+    hide: true,
+    i: -1
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    console.log(app.globalData.openid)
     if (app.globalData.openid == 'ovep35BFNuyupmduRmqKPyN_jdkk') {
       this.setData({
         admini: true
@@ -164,7 +165,7 @@ Page({
   getUserInfo: function(e) {
     wx.getSetting({
       success: res => {
-        if(!res.authSetting['scope.userInfo']) {
+        if (!res.authSetting['scope.userInfo']) {
           this.setData({
             bottomBarShow: true,
             inputBoxShow: false
@@ -177,5 +178,34 @@ Page({
       }
     })
     userInfo = e.detail.userInfo
+  },
+  showHide: function(e) {
+    let openid = e.currentTarget.dataset.openid
+    let i = e.currentTarget.dataset.index
+    if (openid == app.globalData.openid || openid == 'ovep35BFNuyupmduRmqKPyN_jdkk') {
+      this.setData({
+        hide: false,
+        i: i
+      })
+    }
+  },
+  del: function(e) {
+    let id = e.currentTarget.dataset.id
+    wx.showModal({
+      title: '注意',
+      content: '确定要删除此条留言吗？',
+      success(res) {
+        if(res.confirm) {
+          db.collection('messages').doc(id).remove({
+            success() {
+              wx.showToast({
+                title: '已删除'
+              })
+              wx.startPullDownRefresh()
+            }
+          })
+        }
+      }
+    })
   }
 })

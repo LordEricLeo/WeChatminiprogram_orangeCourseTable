@@ -12,19 +12,21 @@ App({
       env: 'test-6c81b6'
     })
 
+    const fsm = wx.getFileSystemManager()
+
     this.openid()
 
     this.globalData = {
       screenWidth: phone.screenWidth,
       screenHeight: phone.screenHeight,
-      db: db
+      db: db,
+      fsm: fsm
     }
   },
   openid: function() {
     wx.cloud.callFunction({
       name: 'login',
       success: res => {
-        console.log(res)
         let openid = res.result.openid
         this.globalData.openid = openid
       }

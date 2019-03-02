@@ -1,5 +1,7 @@
 <!--pages/sports/sports.wxml-->
-<view style='text-align:center;margin:17% 9% 3% 9%'>
-  <text>体测二维码</text>
+<view style='text-align:center;'>
+  <view style='margin-top:100rpx;'>
+    <text>体测二维码</text>
+  </view>
+  <image style='width:600rpx;height:600rpx;' src='{{qrcode}}'></image>
 </view>
-<image style='margin:0 7% 0 7%' src='{{qrcode}}'></image>
