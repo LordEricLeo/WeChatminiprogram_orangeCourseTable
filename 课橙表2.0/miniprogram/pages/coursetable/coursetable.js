@@ -26,30 +26,24 @@ Page({
         success: res => {
           let differdays = new Date().getTime() - res.data[0].lastTime.getTime()
           differdays = Math.floor(differdays / (1000 * 60 * 60 * 24))
-          db.collection('settings').get({
-            success: r => {
-              let difdays = new Date().getTime() - r.data[0].termBeginDate.getTime()
-              difdays = Math.floor(difdays / (1000 * 60 * 60 * 24))
-              this.week = Math.floor(difdays / 7) + 1
-              this.year = r.data[0].termYear
-              this.term = r.data[0].term
-              //一天之内不用查询课表,直接用缓存
-              if (differdays < 1 && this.week == wx.getStorageSync('chooseWeek')) {
-                this.setData({
-                  week: this.week
-                })
-                let course = wx.getStorageSync('course')
-                this.formatCourse(course)
-              } else {
-                this.dbSettings()
-                db.collection('user').doc(res.data[0]._id).update({
-                  data: {
-                    lastTime: new Date()
-                  }
-                })
+          //一天之内不用查询课表,直接用缓存
+          this.week = wx.getStorageSync('week')
+          this.year = wx.getStorageSync('year')
+          this.term = wx.getStorageSync('term')
+          if (differdays < 1 && this.week == wx.getStorageSync('chooseWeek')) {
+            this.setData({
+              week: this.week
+            })
+            let course = wx.getStorageSync('course')
+            this.formatCourse(course)
+          } else {
+            this.dbSettings()
+            db.collection('user').doc(res.data[0]._id).update({
+              data: {
+                lastTime: new Date()
               }
-            }
-          })
+            })
+          }
         }
       })
     } else {
@@ -79,6 +73,9 @@ Page({
         this.year = res.data[0].termYear
         this.term = res.data[0].term
         this.queryCourse(this.week, this.year, this.term)
+        wx.setStorageSync('week', this.week)
+        wx.setStorageSync('year', this.year)
+        wx.setStorageSync('term', this.term)
       }
     })
   },
