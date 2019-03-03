@@ -7,6 +7,12 @@
     </view>
     <switch bindchange='course' checked='{{first}}' style='position:relative;top:9rpx;'></switch>
   </view>
+  <view style='display:flex;flex-direction:row;border-bottom:2rpx solid #AAAAAA;background:white;height:84rpx;width:100%;'>
+    <view style='margin:10rpx;width:70%;'>
+      <text>使用缓存课表</text>
+    </view>
+    <switch bindchange='cache' checked='{{cache}}' style='position:relative;top:9rpx;'></switch>
+  </view>
   <view style='border-bottom:2rpx solid #AAAAAA;background:white;height:84rpx;width:100%;text-align:center;display:flex;flex-direction:row;'>
     <view style='position:relative;top:15rpx;width:85%;' bindtap='background'>
       <text>更换课表背景</text>
@@ -29,5 +35,14 @@
     <view style='position:relative;top:15rpx;'>
       <text>退出登录</text>
     </view>
+  </view>
+</view>
+<view class='tips' style='font-size:20rpx;position:fixed;bottom:0;'>
+  <view>提示：</view>
+  <view>
+    <text>课表设为首页<text style='color:#AAAAAA'>每次启动小程序，自动打开课表页面</text></text>
+  </view>
+  <view>
+    <text>使用缓存课表<text style='color:#AAAAAA'>加快看课表速度，取消每次联网更新，无法自动更新课表</text></text>
   </view>
 </view>

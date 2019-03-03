@@ -16,6 +16,11 @@ Page({
         first: wx.getStorageSync('first')
       })
     }
+    if (wx.getStorageSync('cache')) {
+      this.setData({
+        cache: wx.getStorageSync('cache')
+      })
+    }
   },
 
   /**
@@ -28,6 +33,10 @@ Page({
   course: function(e) {
     let first = e.detail.value
     wx.setStorageSync('first', first)
+  },
+  cache: function (e) {
+    let cache = e.detail.value
+    wx.setStorageSync('cache', cache)
   },
   connect: function() {
     wx.navigateTo({
