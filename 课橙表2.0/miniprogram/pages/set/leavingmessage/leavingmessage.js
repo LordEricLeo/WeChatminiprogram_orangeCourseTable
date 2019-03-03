@@ -86,7 +86,7 @@ Page({
           let time = new Date()
           time.setTime(res.data[i].time)
           let y = time.getFullYear()
-          let m = time.getMonth()
+          let m = time.getMonth() + 1
           let d = time.getDate()
           let hh = time.getHours() > 9 ? time.getHours() : '0' + time.getHours()
           let mm = time.getMinutes() > 9 ? time.getMinutes() : '0' + time.getMinutes()
