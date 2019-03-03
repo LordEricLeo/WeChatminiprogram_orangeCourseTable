@@ -19,7 +19,7 @@
     </view>
   </scroll-view>
   <view wx:if='{{bottomBarShow}}' style='position:fixed;bottom:0;width:100%;height:7%;text-align:center;'>
-    <button open-type='getUserInfo' bindgetuserinfo='getUserInfo' bindtap='add' style='background:#0074D9;'>
+    <button open-type='getUserInfo' bindgetuserinfo='getUserInfo' style='background:#0074D9;'>
       <image src='/images/add.png' style='width:70rpx;height:70rpx;'></image>
     </button>
   </view>

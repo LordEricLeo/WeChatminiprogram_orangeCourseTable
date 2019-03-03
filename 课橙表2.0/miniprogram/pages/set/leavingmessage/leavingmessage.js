@@ -99,12 +99,6 @@ Page({
       }
     })
   },
-  add: function() {
-    this.setData({
-      bottomBarShow: false,
-      inputBoxShow: true
-    })
-  },
   cancel: function() {
     this.setData({
       bottomBarShow: true,
@@ -166,18 +160,19 @@ Page({
     wx.getSetting({
       success: res => {
         if (!res.authSetting['scope.userInfo']) {
-          this.setData({
-            bottomBarShow: true,
-            inputBoxShow: false
-          })
           wx.showToast({
             title: '请允许以留言',
             image: '/images/failed.png'
           })
+        } else {
+          userInfo = e.detail.userInfo
+          this.setData({
+            bottomBarShow: false,
+            inputBoxShow: true
+          })
         }
       }
     })
-    userInfo = e.detail.userInfo
   },
   showHide: function(e) {
     let openid = e.currentTarget.dataset.openid
