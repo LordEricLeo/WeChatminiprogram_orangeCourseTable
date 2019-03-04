@@ -177,7 +177,7 @@ Page({
   showHide: function(e) {
     let openid = e.currentTarget.dataset.openid
     let i = e.currentTarget.dataset.index
-    if (openid == app.globalData.openid || openid == 'ovep35BFNuyupmduRmqKPyN_jdkk') {
+    if (openid == app.globalData.openid || app.globalData.openid == 'ovep35BFNuyupmduRmqKPyN_jdkk') {
       this.setData({
         hide: false,
         i: i
@@ -190,7 +190,7 @@ Page({
       title: '注意',
       content: '确定要删除此条留言吗？',
       success(res) {
-        if(res.confirm) {
+        if (res.confirm) {
           db.collection('messages').doc(id).remove({
             success() {
               wx.showToast({

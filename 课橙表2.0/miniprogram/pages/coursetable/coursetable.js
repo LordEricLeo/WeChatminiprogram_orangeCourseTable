@@ -21,49 +21,20 @@ Page({
    */
   onLoad: function(options) {
     this.backgroundImage()
-    if (wx.getStorageSync('course')) {
-      if (wx.getStorageSync('cache')) {
-        this.week = wx.getStorageSync('week')
-        this.year = wx.getStorageSync('year')
-        this.term = wx.getStorageSync('term')
-        this.setData({
-          week: wx.getStorageSync('chooseWeek')
-        })
-        let course = wx.getStorageSync('course')
-        this.formatCourse(course)
-      } else {
-        db.collection('user').get({
-          success: res => {
-            let differdays = new Date().getTime() - res.data[0].lastTime.getTime()
-            differdays = Math.floor(differdays / (1000 * 60 * 60 * 24))
-            //一天之内不用查询课表,直接用缓存
-            this.week = wx.getStorageSync('week')
-            this.year = wx.getStorageSync('year')
-            this.term = wx.getStorageSync('term')
-            if (differdays < 1 && this.week == wx.getStorageSync('chooseWeek')) {
-              this.setData({
-                week: this.week
-              })
-              let course = wx.getStorageSync('course')
-              this.formatCourse(course)
-            } else {
-              this.dbSettings()
-              db.collection('user').doc(res.data[0]._id).update({
-                data: {
-                  lastTime: new Date()
-                }
-              })
-            }
-          }
-        })
-      }
-    } else {
-      this.dbSettings()
-      db.collection('user').add({
-        data: {
-          lastTime: new Date()
-        }
+    if (wx.getStorageSync('course') && wx.getStorageSync('cache')) {
+      this.week = wx.getStorageSync('week')
+      this.year = wx.getStorageSync('year')
+      this.term = wx.getStorageSync('term')
+      this.setData({
+        week: wx.getStorageSync('chooseWeek')
       })
+      let course = wx.getStorageSync('course')
+      this.formatCourse(course)
+    } else {
+      wx.showLoading({
+        title: '请稍后...',
+      })
+      this.dbSettings()
     }
     this.dbMemo()
   },
@@ -240,6 +211,7 @@ Page({
       month: month,
       days: days
     })
+    wx.hideLoading()
   },
 
   //点击课表之后展示详细课表信息的事件
