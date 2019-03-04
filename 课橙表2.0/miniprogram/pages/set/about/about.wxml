@@ -1,7 +1,7 @@
 <!--miniprogram/pages/set/about/about.wxml-->
 <navbar navback='true' title='关于'></navbar>
 <view style='width:750rpx;height:1100rpx;text-align:center;margin-top:100rpx;'>
-  <text>版本2.3.3</text>
+  <text>版本2.3.4</text>
   <text style='font-size:30rpx;'>
 更新内容：
 1)现可查看每周课表
@@ -10,7 +10,7 @@
 4)点击空白处可添加备忘
 5)全新留言板块
 6)更换课表背景
-7)一天之内不刷新课表
-8)添加使用缓存课表选项
+7)添加使用缓存课表选项
+8)一天之内不刷新课表带来许多bug，删除。修复部分用户看不到课表的问题
 加入我：请发邮件至289471838@qq.com</text>
 </view>
