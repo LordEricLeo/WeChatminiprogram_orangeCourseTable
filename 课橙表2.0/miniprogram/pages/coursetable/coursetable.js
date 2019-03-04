@@ -81,13 +81,18 @@ Page({
         if (res.statusCode == 200) {
           if (res.data.errcode >= 0) {
             this.completeCourse(res.data.class)
+          } else {
+            wx.showToast({
+              title: (this.data.week - 1) + '周为最后一周',
+              image: '/images/warning.png'
+            })
+            this.queryCourse(this.data.week - 1, this.year, this.term)
           }
         } else {
           wx.showToast({
-            title: '当前为最后一周',
-            image: '/images/warning.png'
+            title: '网络出问题啦',
+            image: '/images/failed.png'
           })
-          this.queryCourse(this.data.week - 1, this.year, this.term)
         }
       }
     })

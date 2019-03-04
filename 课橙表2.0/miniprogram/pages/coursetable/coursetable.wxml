@@ -1,5 +1,5 @@
 <!--pages/coursetable/coursetable.wxml-->
-<navbar navback='true' course='true' title='第{{week}}周' bind:last='last' bind:next='next'></navbar>
+<navbar navback='true' button='true' title='第{{week}}周' bind:last='last' bind:next='next'></navbar>
 <view style='background-image:url({{bgimg}});background-size:100%;'>
   <view style='width:100%;height:{{screenHeight*0.08}}px;'>
     <view style='display:flex;flex-direction:row'>

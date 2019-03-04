@@ -17,7 +17,7 @@ Component({
       type: String,
       value: ''
     },
-    course: {
+    button: {
       type: Boolean,
       value: false
     }

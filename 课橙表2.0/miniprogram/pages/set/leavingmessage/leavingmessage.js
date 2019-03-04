@@ -15,7 +15,8 @@ Page({
     inputBoxShow: false,
     admini: false,
     hide: true,
-    i: -1
+    i: -1,
+    page: 1
   },
 
   /**
@@ -27,7 +28,7 @@ Page({
         admini: true
       })
     }
-    this.dbMessage()
+    this.dbMessage(this.data.page)
   },
 
   /**
@@ -62,7 +63,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function() {
-    this.dbMessage()
+    this.dbMessage(this.data.page)
     wx.stopPullDownRefresh()
   },
 
@@ -79,23 +80,34 @@ Page({
   onShareAppMessage: function() {
 
   },
-  dbMessage: function() {
-    db.collection('messages').get({
+  dbMessage: function(page) {
+    this.setData({
+      page: page
+    })
+    db.collection('messages').skip((page - 1) * 20).get({
       success: res => {
-        for (let i = 0; i < res.data.length; i++) {
-          let time = new Date()
-          time.setTime(res.data[i].time)
-          let y = time.getFullYear()
-          let m = time.getMonth() + 1
-          let d = time.getDate()
-          let hh = time.getHours() > 9 ? time.getHours() : '0' + time.getHours()
-          let mm = time.getMinutes() > 9 ? time.getMinutes() : '0' + time.getMinutes()
-          let ss = time.getSeconds() > 9 ? time.getSeconds() : '0' + time.getSeconds()
-          res.data[i].time = y + '年' + m + '月' + d + '日 ' + hh + ':' + mm + ':' + ss
+        if (res.data.length > 0) {
+          for (let i = 0; i < res.data.length; i++) {
+            let time = new Date()
+            time.setTime(res.data[i].time)
+            let y = time.getFullYear()
+            let m = time.getMonth() + 1
+            let d = time.getDate()
+            let hh = time.getHours() > 9 ? time.getHours() : '0' + time.getHours()
+            let mm = time.getMinutes() > 9 ? time.getMinutes() : '0' + time.getMinutes()
+            let ss = time.getSeconds() > 9 ? time.getSeconds() : '0' + time.getSeconds()
+            res.data[i].time = y + '年' + m + '月' + d + '日 ' + hh + ':' + mm + ':' + ss
+          }
+          this.setData({
+            messages: res.data
+          })
+        } else {
+          wx.showToast({
+            title: '当前为最后一页',
+            image: '/images/warning.png'
+          })
+          this.dbMessage(this.data.page - 1)
         }
-        this.setData({
-          messages: res.data
-        })
       }
     })
   },
@@ -123,14 +135,14 @@ Page({
     } else {
       if (nick) {
         let nicknames = ['匿名小同学', '一位不愿意透露姓名的人士', '挖呀挖呀挖石油', '亿万欢乐豆富翁']
-        let maleNicknames = ['石大吴彦祖', '18号楼扛把子', '哲学家♂', '自由的男人', '南教厕所所长', '一位恶人高调路过', '杰出校友XX康', '我错了我错了我错了', '匿名小同学', '一位不愿意透露姓名的人士', '挖呀挖呀挖石油', '亿万欢乐豆富翁']
-        let femaleNicknames = ['石大杨超越', '爱吃萝卜爱吃菜', '小仙女本仙', '燃烧我的卡路里', '网红女主播', '十八线非著名女星', '口红收藏家', '我不听我不听我不听', '匿名小同学', '一位不愿意透露姓名的人士', '挖呀挖呀挖石油', '亿万欢乐豆富翁']
+        let maleNicknames = ['石大吴彦祖', '18号楼扛把子', '哲学家♂', '自由的男人', '南教厕所所长', '一位恶人高调路过', '杰出校友XX康', '我错了我错了我错了', '匿名小同学', '一位不愿意透露姓名的人士', '挖呀挖呀挖石油', '亿万欢乐豆富翁', '未来大满贯选手樊振东']
+        let femaleNicknames = ['石大杨超越', '爱吃萝卜爱吃菜', '小仙女本仙', '燃烧我的卡路里', '网红女主播', '十八线非著名女星', '口红收藏家', '我不听我不听我不听', '匿名小同学', '一位不愿意透露姓名的人士', '挖呀挖呀挖石油', '亿万欢乐豆富翁', '大魔王张怡宁']
         if (gender == 0) {
           username = nicknames[Math.floor(Math.random() * 4)]
         } else if (gender == 1) {
-          username = maleNicknames[Math.floor(Math.random() * 12)]
+          username = maleNicknames[Math.floor(Math.random() * 13)]
         } else if (gender == 2) {
-          username = femaleNicknames[Math.floor(Math.random() * 12)]
+          username = femaleNicknames[Math.floor(Math.random() * 13)]
         }
       }
       db.collection('messages').add({
@@ -202,5 +214,18 @@ Page({
         }
       }
     })
+  },
+  last: function() {
+    if (this.data.page > 1) {
+      this.dbMessage(this.data.page - 1)
+    } else {
+      wx.showToast({
+        title: '当前已为第一页',
+        image: '/images/warning.png'
+      })
+    }
+  },
+  next: function() {
+    this.dbMessage(this.data.page + 1)
   }
 })

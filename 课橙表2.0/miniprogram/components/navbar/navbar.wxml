@@ -7,7 +7,7 @@
     </view>
   </view>
   <!--上周下周课表按钮-->
-  <view wx:if='{{course}}' style='position:fixed;top:3%;width:100%;height:80rpx;display:flex;flex-direction:row;'>
+  <view wx:if='{{button}}' style='position:fixed;top:3%;width:100%;height:80rpx;display:flex;flex-direction:row;'>
     <view style='position:relative;left:200rpx;' bindtap='last'>
       <image src='/images/last.png' style='width:60rpx;height:60rpx;margin:10rpx 20rpx;'></image>
     </view>
